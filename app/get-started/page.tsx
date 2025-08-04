@@ -1,4 +1,3 @@
-
 'use client';
 
 import Header from '@/components/Header';
@@ -11,7 +10,7 @@ export default function GetStartedPage() {
   const [formData, setFormData] = useState({
     businessType: '',
     teamSize: '',
-    services: [],
+    services: [] as string[], // Fix: Explicitly type as string[]
     timeline: '',
     budget: '',
     name: '',
