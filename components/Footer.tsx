@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -32,7 +31,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4 sm:mb-6">
               <img 
-                src="https://static.readdy.ai/image/0509790048fb828d16069f1183307fbc/eeec49af0a1a72b38a483e8b29cf985c.png" 
+                src="/logo.png" 
                 alt="Virtual Staffing Solutions" 
                 className="h-24 sm:h-30 w-auto"
               />

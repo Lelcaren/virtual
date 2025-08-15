@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -14,7 +13,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img 
-              src="https://static.readdy.ai/image/0509790048fb828d16069f1183307fbc/eeec49af0a1a72b38a483e8b29cf985c.png" 
+              src="/logo.png" 
               alt="Virtual Staffing Solutions" 
               className="h-20 sm:h-24 lg:h-28 w-auto"
             />

@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   title: "Virtual Staffing Solutions - Professional Remote Staffing",
   description: "A collaborative partner of Belyotte Global Opportunities. Professional virtual staffing solutions for businesses worldwide.",
   icons: {
-    icon: 'https://static.readdy.ai/image/0509790048fb828d16069f1183307fbc/fb00fac02893b2eac2268c2a4b63a141.png',
-    shortcut: 'https://static.readdy.ai/image/0509790048fb828d16069f1183307fbc/fb00fac02893b2eac2268c2a4b63a141.png',
-    apple: 'https://static.readdy.ai/image/0509790048fb828d16069f1183307fbc/fb00fac02893b2eac2268c2a4b63a141.png',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 

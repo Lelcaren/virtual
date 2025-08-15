@@ -1,4 +1,3 @@
-
 'use client';
 
 import Header from '@/components/Header';
@@ -83,7 +82,7 @@ export default function AboutPage() {
                   OUR STORY
                 </div>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-900 mb-4 sm:mb-6">
-                  15 Years of Virtual Staffing Excellence
+                  6 Years of Virtual Staffing Excellence
                 </h2>
                 <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                   Founded as a collaborative partner of Belyotte Global Opportunities, Virtual Staffing Solutions has been at the forefront of the remote work revolution for over 15 years. We recognized early on that businesses needed access to skilled professionals without geographical limitations.
@@ -93,11 +92,11 @@ export default function AboutPage() {
                 </p>
                 <div className="grid grid-cols-2 gap-4 sm:gap-6">
                   <div className="text-center p-3 sm:p-4 bg-blue-50 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">15+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">6+</div>
                     <div className="text-xs sm:text-sm text-gray-600">Years Experience</div>
                   </div>
                   <div className="text-center p-3 sm:p-4 bg-blue-50 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">500+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">100+</div>
                     <div className="text-xs sm:text-sm text-gray-600">Happy Clients</div>
                   </div>
                 </div>
@@ -105,7 +104,7 @@ export default function AboutPage() {
               <div className="relative order-1 lg:order-2">
                 <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                   <img
-                    src="https://readdy.ai/api/search-image?query=Professional%20executives%20and%20virtual%20assistants%20in%20modern%20collaborative%20meeting%2C%20diverse%20team%20of%20successful%20business%20professionals%20on%20video%20conference%20call%20with%20multiple%20screens%2C%20elegant%20contemporary%20workspace%20with%20premium%20technology%2C%20sophisticated%20office%20environment%20showcasing%20global%20remote%20collaboration%20and%20executive%20leadership%20excellence&width=600&height=500&seq=exec-meeting&orientation=landscape"
+                    src="/live.jpeg"
                     alt="Our Team"
                     className="w-full h-[350px] sm:h-[450px] lg:h-[550px] object-cover object-top transform hover:scale-105 transition-transform duration-700"
                   />
