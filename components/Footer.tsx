@@ -23,6 +23,24 @@ export default function Footer() {
     'Data Entry'
   ];
 
+  const socialLinks = [
+    {
+      name: 'LinkedIn',
+      href: 'https://linkedin.com/company/virtualstaffingsolutions',
+      icon: 'ri-linkedin-fill'
+    },
+    {
+      name: 'Facebook',
+      href: 'https://www.facebook.com/Vstaffingsolutions',
+      icon: 'ri-facebook-fill'
+    },
+    {
+      name: 'Instagram',
+      href: 'https://www.instagram.com/virtual.staffingsolutions/',
+      icon: 'ri-instagram-fill'
+    }
+  ];
+
   return (
     <footer className="bg-white text-gray-800 border-t border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
@@ -40,15 +58,18 @@ export default function Footer() {
               Partnering with Belyotte Global Opportunities to deliver exceptional virtual staffing solutions worldwide.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-                <i className="ri-linkedin-fill text-sm sm:text-base text-white"></i>
-              </a>
-              <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-                <i className="ri-twitter-fill text-sm sm:text-base text-white"></i>
-              </a>
-              <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-                <i className="ri-facebook-fill text-sm sm:text-base text-white"></i>
-              </a>
+              {socialLinks.map((social) => (
+                <a 
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+                  aria-label={`Follow us on ${social.name}`}
+                >
+                  <i className={`${social.icon} text-sm sm:text-base text-white`}></i>
+                </a>
+              ))}
             </div>
           </div>
 

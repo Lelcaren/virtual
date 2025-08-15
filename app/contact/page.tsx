@@ -1,10 +1,3 @@
-
-// Original code:
-/*
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Link from 'next/link';
-*/
 'use client';
 
 import { useState } from 'react';
@@ -354,23 +347,21 @@ export default function ContactPage() {
                       <p className="text-gray-600">Book a free 30-minute consultation to discuss your virtual staffing needs</p>
                     </div>
 
-                    {/* Appointment Booking Placeholder */}
-                    <div className="h-[600px] border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center bg-gray-50">
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <i className="ri-calendar-line text-2xl text-blue-600"></i>
-                        </div>
-                        <h4 className="text-xl font-semibold text-gray-700 mb-2">Motion Booking Integration</h4>
-                        <p className="text-gray-500 mb-4">Your Motion calendar booking will be integrated here</p>
-                        <div className="text-sm text-gray-400">
-                          Ready to connect your Motion scheduling system
-                        </div>
-                      </div>
+                    {/* Motion Calendar Embed */}
+                    <div className="relative">
+                      <iframe
+                        src="https://app.usemotion.com/meet/kevinotey/47t0n5svirtualstaffing"
+                        width="100%"
+                        height="600"
+                        frameBorder="0"
+                        className="rounded-lg border border-gray-200"
+                        title="Book Virtual Staffing Consultation"
+                      ></iframe>
                     </div>
 
-                    {/* Direct booking options */}
+                    {/* Alternative booking options */}
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                      <h4 className="font-semibold text-blue-900 mb-3">Book Your Consultation Now:</h4>
+                      <h4 className="font-semibold text-blue-900 mb-3">Having trouble with the calendar?</h4>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all cursor-pointer">
                           <div className="flex items-center">
@@ -389,6 +380,22 @@ export default function ContactPage() {
                             <span className="font-medium text-gray-700">Email for Appointment</span>
                           </div>
                           <span className="text-blue-600 font-semibold">hello@virtualstaffing.com</span>
+                        </div>
+                        <div className="flex items-center justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all cursor-pointer">
+                          <div className="flex items-center">
+                            <div className="w-4 h-4 flex items-center justify-center mr-3">
+                              <i className="ri-external-link-line text-blue-600"></i>
+                            </div>
+                            <span className="font-medium text-gray-700">Open in New Tab</span>
+                          </div>
+                          <a 
+                            href="https://app.usemotion.com/meet/kevinotey/47t0n5svirtualstaffing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 font-semibold hover:text-blue-700"
+                          >
+                            Book Now
+                          </a>
                         </div>
                       </div>
                     </div>
