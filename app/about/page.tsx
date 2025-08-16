@@ -9,19 +9,19 @@ export default function AboutPage() {
     {
       name: 'Sarah Johnson',
       position: 'CEO & Founder',
-      image: 'https://readdy.ai/api/search-image?query=Professional%20female%20CEO%20in%20elegant%20business%20attire%2C%20confident%20executive%20portrait%20with%20warm%20smile%2C%20modern%20corporate%20headshot%20with%20sophisticated%20lighting%2C%20business%20professional%20appearance%20conveying%20leadership%20expertise%20and%20approachability%2C%20clean%20contemporary%20office%20background%20with%20natural%20lighting%20showcasing%20executive%20presence&width=300&height=400&seq=ceo-portrait&orientation=portrait',
+      image: '/kev.jpg',
       bio: 'With over 20 years of experience in virtual staffing, Sarah founded our company to bridge the gap between businesses and top-tier remote talent.',
     },
     {
       name: 'Michael Chen',
       position: 'Operations Director',
-      image: 'https://readdy.ai/api/search-image?query=Professional%20male%20operations%20director%20in%20sharp%20business%20suit%2C%20confident%20executive%20portrait%20with%20friendly%20smile%2C%20modern%20corporate%20headshot%20with%20professional%20lighting%2C%20business%20attire%20conveying%20competence%20and%20reliability%2C%20contemporary%20office%20environment%20with%20clean%20background%20showcasing%20operational%20excellence&width=300&height=400&seq=ops-director&orientation=portrait',
+      image: '/maou.jpg',
       bio: 'Michael oversees our global operations and ensures seamless integration of virtual assistants with client teams worldwide.',
     },
     {
       name: 'Emily Rodriguez',
       position: 'Quality Assurance Manager',
-      image: 'https://readdy.ai/api/search-image?query=Professional%20female%20quality%20manager%20in%20sophisticated%20business%20attire%2C%20confident%20portrait%20with%20warm%20professional%20smile%2C%20executive%20headshot%20with%20elegant%20lighting%2C%20business%20professional%20appearance%20conveying%20expertise%20and%20approachability%2C%20modern%20office%20setting%20with%20clean%20contemporary%20background&width=300&height=400&seq=qa-manager&orientation=portrait',
+      image: '/director.jpg',
       bio: 'Emily leads our quality assurance team, maintaining the highest standards across all virtual staffing placements.',
     },
   ];

@@ -653,9 +653,6 @@ video {
 .h-\[350px\]{
   height: 350px;
 }
-.h-\[600px\]{
-  height: 600px;
-}
 .h-screen{
   height: 100vh;
 }
@@ -864,9 +861,6 @@ video {
 }
 .border-t{
   border-top-width: 1px;
-}
-.border-dashed{
-  border-style: dashed;
 }
 .border-blue-600{
   --tw-border-opacity: 1;
@@ -1270,10 +1264,6 @@ video {
 .text-gray-100{
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity, 1));
-}
-.text-gray-400{
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 .text-gray-500{
   --tw-text-opacity: 1;
