@@ -6,25 +6,27 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   const team = [
-    {
-      name: 'Sarah Johnson',
-      position: 'CEO & Founder',
-      image: '/kev.jpg',
-      bio: 'With over 20 years of experience in virtual staffing, Sarah founded our company to bridge the gap between businesses and top-tier remote talent.',
-    },
-    {
-      name: 'Michael Chen',
-      position: 'Operations Director',
-      image: '/maou.jpg',
-      bio: 'Michael oversees our global operations and ensures seamless integration of virtual assistants with client teams worldwide.',
-    },
-    {
-      name: 'Emily Rodriguez',
-      position: 'Quality Assurance Manager',
-      image: '/director.jpg',
-      bio: 'Emily leads our quality assurance team, maintaining the highest standards across all virtual staffing placements.',
-    },
-  ];
+  {
+    name: 'Kevin Otey',
+    position: 'Managing Director',
+    image: '/kev.jpg',
+    bio: 'Kevin provides strategic direction and oversees the company’s operations, ensuring clients receive innovative and reliable virtual staffing solutions tailored to their needs.',
+  },
+  {
+    name: 'Dr. Maureen Serem',
+    position: 'Managing Partner',
+    image: '/maou.jpg',
+    bio: 'Dr. Serem leads our partnerships and client relations, building strong collaborations and ensuring that our solutions align with the long-term goals of our clients.',
+  },
+  {
+    name: 'Dr. Vincent Serem',
+    position: 'Founder and Managing Partner',
+    image: '/director.jpg',
+    bio: 'As the founder, Dr. Serem established the vision of the company and continues to drive growth through leadership, innovation, and a commitment to excellence in virtual staffing.',
+  },
+];
+
+
 
   const values = [
     {
