@@ -82,21 +82,16 @@ export default function ContactPage() {
     {
       icon: 'ri-phone-line',
       title: 'Phone',
-      details: '+1 (555) 123-4567',
+      details: '757-296-8897',
       subtext: 'Mon-Fri 9AM-6PM EST'
     },
     {
       icon: 'ri-mail-line',
       title: 'Email',
-      details: 'hello@virtualstaffing.com',
+      details: 'info@thevirtualstaffingsolution.com',
       subtext: 'We reply within 24 hours'
     },
-    {
-      icon: 'ri-map-pin-line',
-      title: 'Address',
-      details: '123 Business Center Dr',
-      subtext: 'New York, NY 10001'
-    },
+   
     {
       icon: 'ri-time-line',
       title: 'Business Hours',
