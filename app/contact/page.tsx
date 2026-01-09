@@ -83,22 +83,53 @@ export default function ContactPage() {
       icon: 'ri-phone-line',
       title: 'Phone',
       details: '757-296-8897',
-      subtext: 'Mon-Fri 9AM-6PM EST'
+      subtext: 'Mon-Fri 9AM-6PM EST',
+      link: 'tel:757-296-8897',
+      color: 'blue'
     },
     {
       icon: 'ri-mail-line',
       title: 'Email',
       details: 'info@thevirtualstaffingsolution.com',
-      subtext: 'We reply within 24 hours'
+      subtext: 'We reply within 24 hours',
+      link: 'mailto:info@thevirtualstaffingsolution.com',
+      color: 'indigo'
     },
-   
     {
       icon: 'ri-time-line',
       title: 'Business Hours',
       details: 'Monday - Friday',
-      subtext: '9:00 AM - 6:00 PM EST'
+      subtext: '9:00 AM - 6:00 PM EST',
+      color: 'purple'
     }
   ];
+
+  const getColorClasses = (color: string) => {
+    const colors: any = {
+      blue: {
+        bg: 'bg-blue-600',
+        hover: 'hover:bg-blue-700',
+        text: 'text-blue-600',
+        lightBg: 'bg-blue-50',
+        ring: 'ring-blue-100'
+      },
+      indigo: {
+        bg: 'bg-indigo-600',
+        hover: 'hover:bg-indigo-700',
+        text: 'text-indigo-600',
+        lightBg: 'bg-indigo-50',
+        ring: 'ring-indigo-100'
+      },
+      purple: {
+        bg: 'bg-purple-600',
+        hover: 'hover:bg-purple-700',
+        text: 'text-purple-600',
+        lightBg: 'bg-purple-50',
+        ring: 'ring-purple-100'
+      }
+    };
+    return colors[color];
+  };
 
   return (
     <div className="min-h-screen">
@@ -123,28 +154,94 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Contact Info */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <div className="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-4">
+        {/* Contact Info - IMPROVED SECTION */}
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+              <div className="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-semibold mb-4 shadow-md">
                 CONTACT INFORMATION
               </div>
-              <h2 className="text-4xl font-bold text-blue-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
                 Multiple Ways to <span className="text-blue-600">Reach Us</span>
               </h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+                Choose your preferred method of contact. We're here to help you get started.
+              </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {contactInfo.map((info, index) => (
-                <div key={index} className="text-center p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-lg transition-all cursor-pointer">
-                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i className={`${info.icon} text-2xl text-white`}></i>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+              {contactInfo.map((info, index) => {
+                const colors = getColorClasses(info.color);
+                const CardWrapper = info.link ? 'a' : 'div';
+                const linkProps = info.link ? { href: info.link } : {};
+
+                return (
+                  <CardWrapper
+                    key={index}
+                    {...linkProps}
+                    className={`group relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 ${
+                      info.link ? 'cursor-pointer hover:-translate-y-2' : ''
+                    }`}
+                  >
+                    {/* Decorative gradient background */}
+                    <div className={`absolute inset-0 ${colors.lightBg} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`}></div>
+                    
+                    <div className="relative z-10">
+                      {/* Icon */}
+                      <div className={`w-14 h-14 sm:w-16 sm:h-16 ${colors.bg} ${info.link ? colors.hover : ''} rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <i className={`${info.icon} text-2xl sm:text-3xl text-white`}></i>
+                      </div>
+
+                      {/* Content */}
+                      <div className="space-y-2 sm:space-y-3">
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                          {info.title}
+                        </h3>
+                        <p className={`${colors.text} font-semibold text-sm sm:text-base break-words`}>
+                          {info.details}
+                        </p>
+                        <p className="text-gray-600 text-xs sm:text-sm">
+                          {info.subtext}
+                        </p>
+                      </div>
+
+                      {/* Clickable indicator */}
+                      {info.link && (
+                        <div className="mt-4 flex items-center text-gray-400 group-hover:text-blue-600 transition-colors">
+                          <span className="text-xs sm:text-sm font-medium">Click to contact</span>
+                          <i className="ri-arrow-right-line ml-2 text-sm group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Corner accent */}
+                    <div className={`absolute top-0 right-0 w-20 h-20 ${colors.lightBg} rounded-bl-full opacity-50`}></div>
+                  </CardWrapper>
+                );
+              })}
+            </div>
+
+            {/* Additional CTA */}
+            <div className="mt-12 sm:mt-16 text-center">
+              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xl max-w-4xl mx-auto">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                      Prefer to Schedule a Call?
+                    </h3>
+                    <p className="text-blue-100 text-sm sm:text-base">
+                      Book a free consultation at a time that works for you
+                    </p>
                   </div>
-                  <h3 className="text-xl font-semibold text-blue-900 mb-2">{info.title}</h3>
-                  <p className="text-blue-600 font-medium mb-2">{info.details}</p>
-                  <p className="text-gray-600 text-sm">{info.subtext}</p>
+                  <button 
+                    onClick={() => setActiveTab('appointment')}
+                    className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm sm:text-base"
+                  >
+                    Book Appointment
+                    <i className="ri-calendar-line ml-2"></i>
+                  </button>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
@@ -345,7 +442,7 @@ export default function ContactPage() {
                     {/* Motion Calendar Embed */}
                     <div className="relative">
                       <iframe
-                        src="https://app.usemotion.com/meet/kevinotey/47t0n5svirtualstaffing"
+                        src=""
                         width="100%"
                         height="600"
                         frameBorder="0"
@@ -356,42 +453,46 @@ export default function ContactPage() {
 
                     {/* Alternative booking options */}
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                      <h4 className="font-semibold text-blue-900 mb-3">Having trouble with the calendar?</h4>
+                      <h4 className="font-semibold text-blue-900 mb-3 text-sm sm:text-base">Having trouble with the calendar?</h4>
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all cursor-pointer">
+                        <a 
+                          href="tel:757-296-8897"
+                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
+                        >
                           <div className="flex items-center">
-                            <div className="w-4 h-4 flex items-center justify-center mr-3">
+                            <div className="w-8 h-8 flex items-center justify-center mr-3 bg-blue-100 rounded-lg flex-shrink-0">
                               <i className="ri-phone-line text-blue-600"></i>
                             </div>
-                            <span className="font-medium text-gray-700">Call to Schedule</span>
+                            <span className="font-medium text-gray-700 text-sm sm:text-base">Call to Schedule</span>
                           </div>
-                          <span className="text-blue-600 font-semibold">+1 (555) 123-4567</span>
-                        </div>
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all cursor-pointer">
+                          <span className="text-blue-600 font-semibold text-sm sm:text-base break-all sm:break-normal ml-11 sm:ml-0">757-296-8897</span>
+                        </a>
+                        <a 
+                          href="mailto:info@thevirtualstaffingsolution.com"
+                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
+                        >
                           <div className="flex items-center">
-                            <div className="w-4 h-4 flex items-center justify-center mr-3">
+                            <div className="w-8 h-8 flex items-center justify-center mr-3 bg-blue-100 rounded-lg flex-shrink-0">
                               <i className="ri-mail-line text-blue-600"></i>
                             </div>
-                            <span className="font-medium text-gray-700">Email for Appointment</span>
+                            <span className="font-medium text-gray-700 text-sm sm:text-base">Email for Appointment</span>
                           </div>
-                          <span className="text-blue-600 font-semibold">hello@virtualstaffing.com</span>
-                        </div>
-                        <div className="flex items-center justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all cursor-pointer">
+                          <span className="text-blue-600 font-semibold text-xs sm:text-sm break-all ml-11 sm:ml-0">info@thevirtualstaffingsolution.com</span>
+                        </a>
+                        <a 
+                          href="https://app.usemotion.com/meet/kevinotey/47t0n5svirtualstaffing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
+                        >
                           <div className="flex items-center">
-                            <div className="w-4 h-4 flex items-center justify-center mr-3">
+                            <div className="w-8 h-8 flex items-center justify-center mr-3 bg-blue-100 rounded-lg flex-shrink-0">
                               <i className="ri-external-link-line text-blue-600"></i>
                             </div>
-                            <span className="font-medium text-gray-700">Open in New Tab</span>
+                            <span className="font-medium text-gray-700 text-sm sm:text-base">Open in New Tab</span>
                           </div>
-                          <a 
-                            href="https://app.usemotion.com/meet/kevinotey/47t0n5svirtualstaffing"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 font-semibold hover:text-blue-700"
-                          >
-                            Book Now
-                          </a>
-                        </div>
+                          <span className="text-blue-600 font-semibold text-sm sm:text-base">Book Now →</span>
+                        </a>
                       </div>
                     </div>
                   </div>
