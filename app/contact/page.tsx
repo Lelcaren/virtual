@@ -233,13 +233,15 @@ export default function ContactPage() {
                       Book a free consultation at a time that works for you
                     </p>
                   </div>
-                  <button 
-                    onClick={() => setActiveTab('appointment')}
-                    className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm sm:text-base"
+                  <a 
+                    href="https://meetings-na2.hubspot.com/kevin-otey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm sm:text-base inline-block"
                   >
                     Book Appointment
                     <i className="ri-calendar-line ml-2"></i>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -439,10 +441,10 @@ export default function ContactPage() {
                       <p className="text-gray-600">Book a free 30-minute consultation to discuss your virtual staffing needs</p>
                     </div>
 
-                    {/* Motion Calendar Embed */}
+                    {/* HubSpot Calendar Embed */}
                     <div className="relative">
                       <iframe
-                        src=""
+                        src="https://meetings-na2.hubspot.com/kevin-otey"
                         width="100%"
                         height="600"
                         frameBorder="0"
@@ -480,7 +482,7 @@ export default function ContactPage() {
                           <span className="text-blue-600 font-semibold text-xs sm:text-sm break-all ml-11 sm:ml-0">info@thevirtualstaffingsolution.com</span>
                         </a>
                         <a 
-                          href="https://app.usemotion.com/meet/kevinotey/47t0n5svirtualstaffing"
+                          href="https://meetings-na2.hubspot.com/kevin-otey"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
