@@ -87,10 +87,10 @@ export default function AboutPage() {
                   6 Years of Virtual Staffing Excellence
                 </h2>
                 <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                  Founded as a collaborative partner of Belyotte Global Opportunities, Virtual Staffing Solutions has been at the forefront of the remote work revolution for over 15 years. We recognized early on that businesses needed access to skilled professionals without geographical limitations.
+                  Founded as a collaborative partner of Belyotte Global Opportunities, Virtual Staffing Solutions has been at the forefront of the remote work revolution for over 6 years. We recognized early on that businesses needed access to skilled professionals without geographical limitations.
                 </p>
                 <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                  Our mission is simple: connect businesses with exceptional virtual talent that drives growth, efficiency, and success. We've helped over 500 companies streamline their operations while maintaining the highest standards of professionalism.
+                  Our mission is simple: connect businesses with exceptional virtual talent that drives growth, efficiency, and success. We've helped over 100 companies streamline their operations while maintaining the highest standards of professionalism.
                 </p>
                 <div className="grid grid-cols-2 gap-4 sm:gap-6">
                   <div className="text-center p-3 sm:p-4 bg-blue-50 rounded-lg">
