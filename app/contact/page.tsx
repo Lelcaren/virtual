@@ -1,9 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Link from 'next/link';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,9 +14,9 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
-  const [activeTab, setActiveTab] = useState('message'); // 'message' or 'appointment'
+  const [activeTab, setActiveTab] = useState('message');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -27,40 +24,59 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('');
 
     // Validate required fields
     if (!formData.name || !formData.email || !formData.message) {
-      setSubmitStatus('Please fill in all required fields.');
+      setSubmitStatus('error');
       setIsSubmitting(false);
       return;
     }
 
     // Validate message length
     if (formData.message.length > 500) {
-      setSubmitStatus('Message must be 500 characters or less.');
+      setSubmitStatus('error');
       setIsSubmitting(false);
       return;
     }
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Prepare form data for Web3Forms
+      const web3FormData = new FormData();
+      web3FormData.append("access_key", "d6c2ae2b-ed5f-4e22-a5d8-bf933f6d1f1f");
+      web3FormData.append("name", formData.name);
+      web3FormData.append("email", formData.email);
+      web3FormData.append("company", formData.company);
+      web3FormData.append("phone", formData.phone);
+      web3FormData.append("service", formData.service);
+      web3FormData.append("message", formData.message);
 
-      setSubmitStatus('Thank you for your message! We\'ll get back to you within 24 hours.');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        service: '',
-        message: ''
+      // Submit to Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: web3FormData
       });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
-      setSubmitStatus('Something went wrong. Please try again.');
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -104,8 +120,8 @@ export default function ContactPage() {
     }
   ];
 
-  const getColorClasses = (color: string) => {
-    const colors: any = {
+  const getColorClasses = (color) => {
+    const colors = {
       blue: {
         bg: 'bg-blue-600',
         hover: 'hover:bg-blue-700',
@@ -132,16 +148,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen">
-      <Header />
+    <div className="min-h-screen bg-gray-50">
       <main>
         {/* Hero Section */}
-        <section 
-          className="relative py-12 sm:py-16 lg:py-20 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `linear-gradient(rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.7)), url('https://readdy.ai/api/search-image?query=Professional%20customer%20service%20representative%20wearing%20headset%20in%20modern%20call%20center%2C%20friendly%20business%20woman%20smiling%20at%20camera%2C%20contemporary%20office%20workspace%20with%20computers%20and%20communication%20technology%2C%20clean%20corporate%20environment%20with%20natural%20lighting&width=1920&height=600&seq=contact-hero&orientation=landscape')`
-          }}
-        >
+        <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-900 to-blue-600">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="max-w-4xl mx-auto">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
@@ -154,7 +164,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Contact Info - IMPROVED SECTION */}
+        {/* Contact Info */}
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 sm:mb-12 lg:mb-16">
@@ -183,16 +193,13 @@ export default function ContactPage() {
                       info.link ? 'cursor-pointer hover:-translate-y-2' : ''
                     }`}
                   >
-                    {/* Decorative gradient background */}
                     <div className={`absolute inset-0 ${colors.lightBg} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`}></div>
                     
                     <div className="relative z-10">
-                      {/* Icon */}
                       <div className={`w-14 h-14 sm:w-16 sm:h-16 ${colors.bg} ${info.link ? colors.hover : ''} rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                         <i className={`${info.icon} text-2xl sm:text-3xl text-white`}></i>
                       </div>
 
-                      {/* Content */}
                       <div className="space-y-2 sm:space-y-3">
                         <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                           {info.title}
@@ -205,7 +212,6 @@ export default function ContactPage() {
                         </p>
                       </div>
 
-                      {/* Clickable indicator */}
                       {info.link && (
                         <div className="mt-4 flex items-center text-gray-400 group-hover:text-blue-600 transition-colors">
                           <span className="text-xs sm:text-sm font-medium">Click to contact</span>
@@ -214,14 +220,12 @@ export default function ContactPage() {
                       )}
                     </div>
 
-                    {/* Corner accent */}
                     <div className={`absolute top-0 right-0 w-20 h-20 ${colors.lightBg} rounded-bl-full opacity-50`}></div>
                   </CardWrapper>
                 );
               })}
             </div>
 
-            {/* Additional CTA */}
             <div className="mt-12 sm:mt-16 text-center">
               <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xl max-w-4xl mx-auto">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
@@ -270,9 +274,7 @@ export default function ContactPage() {
                         : 'text-gray-600 hover:text-blue-600'
                     }`}
                   >
-                    <div className="w-4 h-4 flex items-center justify-center mr-2 inline-block">
-                      <i className="ri-mail-line"></i>
-                    </div>
+                    <i className="ri-mail-line mr-2"></i>
                     Send Message
                   </button>
                   <button
@@ -283,9 +285,7 @@ export default function ContactPage() {
                         : 'text-gray-600 hover:text-blue-600'
                     }`}
                   >
-                    <div className="w-4 h-4 flex items-center justify-center mr-2 inline-block">
-                      <i className="ri-calendar-line"></i>
-                    </div>
+                    <i className="ri-calendar-line mr-2"></i>
                     Book Appointment
                   </button>
                 </div>
@@ -300,6 +300,12 @@ export default function ContactPage() {
                     {submitStatus === 'success' && (
                       <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6">
                         Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                      </div>
+                    )}
+
+                    {submitStatus === 'error' && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+                        Something went wrong. Please check your information and try again.
                       </div>
                     )}
 
@@ -415,17 +421,13 @@ export default function ContactPage() {
                       >
                         {isSubmitting ? (
                           <span className="flex items-center justify-center">
-                            <div className="w-5 h-5 flex items-center justify-center mr-2">
-                              <i className="ri-loader-4-line animate-spin"></i>
-                            </div>
+                            <i className="ri-loader-4-line animate-spin mr-2"></i>
                             Sending...
                           </span>
                         ) : (
                           <span className="flex items-center justify-center">
                             Send Message
-                            <div className="w-5 h-5 flex items-center justify-center ml-2">
-                              <i className="ri-send-plane-line"></i>
-                            </div>
+                            <i className="ri-send-plane-line ml-2"></i>
                           </span>
                         )}
                       </button>
@@ -441,7 +443,6 @@ export default function ContactPage() {
                       <p className="text-gray-600">Book a free 30-minute consultation to discuss your virtual staffing needs</p>
                     </div>
 
-                    {/* HubSpot Calendar Embed */}
                     <div className="relative">
                       <iframe
                         src="https://meetings-na2.hubspot.com/kevin-otey"
@@ -453,7 +454,6 @@ export default function ContactPage() {
                       ></iframe>
                     </div>
 
-                    {/* Alternative booking options */}
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
                       <h4 className="font-semibold text-blue-900 mb-3 text-sm sm:text-base">Having trouble with the calendar?</h4>
                       <div className="space-y-3">
@@ -481,20 +481,6 @@ export default function ContactPage() {
                           </div>
                           <span className="text-blue-600 font-semibold text-xs sm:text-sm break-all ml-11 sm:ml-0">info@thevirtualstaffingsolution.com</span>
                         </a>
-                        <a 
-                          href="https://meetings-na2.hubspot.com/kevin-otey"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
-                        >
-                          <div className="flex items-center">
-                            <div className="w-8 h-8 flex items-center justify-center mr-3 bg-blue-100 rounded-lg flex-shrink-0">
-                              <i className="ri-external-link-line text-blue-600"></i>
-                            </div>
-                            <span className="font-medium text-gray-700 text-sm sm:text-base">Open in New Tab</span>
-                          </div>
-                          <span className="text-blue-600 font-semibold text-sm sm:text-base">Book Now →</span>
-                        </a>
                       </div>
                     </div>
                   </div>
@@ -506,27 +492,21 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
                     <ul className="space-y-4">
                       <li className="flex items-start">
-                        <div className="w-6 h-6 flex items-center justify-center mr-3 mt-1">
-                          <i className="ri-check-line text-blue-200"></i>
-                        </div>
+                        <i className="ri-check-line text-blue-200 mr-3 mt-1"></i>
                         <div>
                           <strong>15+ Years Experience</strong>
                           <p className="text-blue-100 text-sm">Proven track record in virtual staffing solutions</p>
                         </div>
                       </li>
                       <li className="flex items-start">
-                        <div className="w-6 h-6 flex items-center justify-center mr-3 mt-1">
-                          <i className="ri-check-line text-blue-200"></i>
-                        </div>
+                        <i className="ri-check-line text-blue-200 mr-3 mt-1"></i>
                         <div>
                           <strong>24/7 Support</strong>
                           <p className="text-blue-100 text-sm">Round-the-clock assistance when you need it</p>
                         </div>
                       </li>
                       <li className="flex items-start">
-                        <div className="w-6 h-6 flex items-center justify-center mr-3 mt-1">
-                          <i className="ri-check-line text-blue-200"></i>
-                        </div>
+                        <i className="ri-check-line text-blue-200 mr-3 mt-1"></i>
                         <div>
                           <strong>Quality Guaranteed</strong>
                           <p className="text-blue-100 text-sm">Rigorous screening and ongoing quality assurance</p>
@@ -553,39 +533,26 @@ export default function ContactPage() {
                         <span className="text-gray-600">Contact form:</span>
                         <span className="font-medium text-blue-600">Within 24 hours</span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Appointments:</span>
-                        <span className="font-medium text-blue-600">Same day booking</span>
-                      </div>
                     </div>
                   </div>
 
-                  {/* Consultation Benefits */}
                   <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white p-8 rounded-xl">
                     <h3 className="text-xl font-bold mb-4">What to Expect in Your Consultation</h3>
                     <ul className="space-y-3">
                       <li className="flex items-start">
-                        <div className="w-5 h-5 flex items-center justify-center mr-3 mt-0.5">
-                          <i className="ri-check-line"></i>
-                        </div>
+                        <i className="ri-check-line mr-3 mt-0.5"></i>
                         <span className="text-sm">Business needs assessment</span>
                       </li>
                       <li className="flex items-start">
-                        <div className="w-5 h-5 flex items-center justify-center mr-3 mt-0.5">
-                          <i className="ri-check-line"></i>
-                        </div>
+                        <i className="ri-check-line mr-3 mt-0.5"></i>
                         <span className="text-sm">Virtual assistant recommendations</span>
                       </li>
                       <li className="flex items-start">
-                        <div className="w-5 h-5 flex items-center justify-center mr-3 mt-0.5">
-                          <i className="ri-check-line"></i>
-                        </div>
+                        <i className="ri-check-line mr-3 mt-0.5"></i>
                         <span className="text-sm">Custom service package options</span>
                       </li>
                       <li className="flex items-start">
-                        <div className="w-5 h-5 flex items-center justify-center mr-3 mt-0.5">
-                          <i className="ri-check-line"></i>
-                        </div>
+                        <i className="ri-check-line mr-3 mt-0.5"></i>
                         <span className="text-sm">Implementation timeline discussion</span>
                       </li>
                     </ul>
@@ -595,31 +562,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-
-        {/* Partnership Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 text-center">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl font-bold text-blue-900 mb-6">
-                A Collaborative Partner of <span className="text-blue-600">Belyotte Global Opportunities</span>
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Through our partnership with Belyotte Global Opportunities, we provide access to a global network of skilled virtual professionals, ensuring you get the best talent for your specific needs.
-              </p>
-              <Link 
-                href="/about" 
-                className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors"
-              >
-                Learn More About Our Partnership
-                <div className="w-4 h-4 flex items-center justify-center ml-2">
-                  <i className="ri-arrow-right-line"></i>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </section>
       </main>
-      <Footer />
     </div>
   );
 }
