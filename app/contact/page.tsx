@@ -1,6 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -16,7 +19,7 @@ export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState('');
   const [activeTab, setActiveTab] = useState('message');
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -24,7 +27,7 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('');
@@ -120,8 +123,8 @@ export default function ContactPage() {
     }
   ];
 
-  const getColorClasses = (color) => {
-    const colors = {
+  const getColorClasses = (color: string) => {
+    const colors: any = {
       blue: {
         bg: 'bg-blue-600',
         hover: 'hover:bg-blue-700',
@@ -149,9 +152,15 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-900 to-blue-600">
+        <section 
+          className="relative py-12 sm:py-16 lg:py-20 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `linear-gradient(rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.7)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&h=600&fit=crop')`
+          }}
+        >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="max-w-4xl mx-auto">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
@@ -237,15 +246,13 @@ export default function ContactPage() {
                       Book a free consultation at a time that works for you
                     </p>
                   </div>
-                  <a 
-                    href="https://meetings-na2.hubspot.com/kevin-otey"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm sm:text-base inline-block"
+                  <button 
+                    onClick={() => setActiveTab('appointment')}
+                    className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm sm:text-base"
                   >
                     Book Appointment
                     <i className="ri-calendar-line ml-2"></i>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -299,17 +306,17 @@ export default function ContactPage() {
 
                     {submitStatus === 'success' && (
                       <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6">
-                        Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                        Thank you for your message! We'll get back to you within 24 hours.
                       </div>
                     )}
 
                     {submitStatus === 'error' && (
                       <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
-                        Something went wrong. Please check your information and try again.
+                        Please fill in all required fields correctly.
                       </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="space-y-6" id="contact-form">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -417,7 +424,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting || formData.message.length > 500}
-                        className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 whitespace-nowrap"
+                        className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                       >
                         {isSubmitting ? (
                           <span className="flex items-center justify-center">
@@ -562,7 +569,32 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+
+        {/* Partnership Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 text-center">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl font-bold text-blue-900 mb-6">
+                A Collaborative Partner of <span className="text-blue-600">Belyotte Global Opportunities</span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                Through our partnership with Belyotte Global Opportunities, we provide access to a global network of skilled virtual professionals, ensuring you get the best talent for your specific needs.
+              </p>
+              <Link 
+                href="/about" 
+                className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors"
+              >
+                Learn More About Our Partnership
+                <i className="ri-arrow-right-line ml-2"></i>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
+      
+      <Footer />
+      
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
     </div>
   );
 }
