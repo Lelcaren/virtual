@@ -298,10 +298,10 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
                 {/* Message Form */}
                 {activeTab === 'message' && (
-                  <div className="bg-white p-8 rounded-xl shadow-lg lg:col-span-1">
+                  <div className="bg-white p-8 rounded-xl shadow-lg lg:col-span-3">
                     <h3 className="text-2xl font-bold text-blue-900 mb-6">Send Us a Message</h3>
 
                     {submitStatus === 'success' && (
@@ -444,7 +444,7 @@ export default function ContactPage() {
 
                 {/* Appointment Booking */}
                 {activeTab === 'appointment' && (
-                  <div className="bg-white p-8 rounded-xl shadow-lg lg:col-span-2">
+                  <div className="bg-white p-8 rounded-xl shadow-lg lg:col-span-3">
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold text-blue-900 mb-4">Schedule Your Consultation</h3>
                       <p className="text-gray-600">Book a free 30-minute consultation to discuss your virtual staffing needs</p>
@@ -466,7 +466,7 @@ export default function ContactPage() {
                       <div className="space-y-3">
                         <a 
                           href="tel:757-296-8897"
-                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-white rounded-lg hover:shadow-md transition-all gap-2"
+                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
                         >
                           <div className="flex items-center">
                             <div className="w-8 h-8 flex items-center justify-center mr-3 bg-blue-100 rounded-lg flex-shrink-0">
@@ -478,15 +478,15 @@ export default function ContactPage() {
                         </a>
                         <a 
                           href="mailto:info@thevirtualstaffingsolution.com"
-                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-white rounded-lg hover:shadow-md transition-all gap-2"
+                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
                         >
-                          <div className="flex items-center min-w-0">
+                          <div className="flex items-center">
                             <div className="w-8 h-8 flex items-center justify-center mr-3 bg-blue-100 rounded-lg flex-shrink-0">
                               <i className="ri-mail-line text-blue-600"></i>
                             </div>
-                            <span className="font-medium text-gray-700 text-sm sm:text-base whitespace-nowrap">Email for Appointment</span>
+                            <span className="font-medium text-gray-700 text-sm sm:text-base">Email for Appointment</span>
                           </div>
-                          <span className="text-blue-600 font-semibold text-xs sm:text-sm ml-11 sm:ml-0 break-all">info@thevirtualstaffingsolution.com</span>
+                          <span className="text-blue-600 font-semibold text-xs sm:text-sm break-all ml-11 sm:ml-0">info@thevirtualstaffingsolution.com</span>
                         </a>
                       </div>
                     </div>
@@ -494,7 +494,7 @@ export default function ContactPage() {
                 )}
 
                 {/* Additional Info */}
-                <div className="space-y-8 lg:col-span-1">
+                <div className="space-y-8 lg:col-span-2">
                   <div className="bg-blue-900 text-white p-8 rounded-xl">
                     <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
                     <ul className="space-y-4">
