@@ -1,9 +1,9 @@
 {
   "/_not-found/page": "/_not-found",
+  "/get-started/page": "/get-started",
+  "/page": "/",
   "/contact/page": "/contact",
   "/about/page": "/about",
-  "/get-started/page": "/get-started",
-  "/services/page": "/services",
-  "/page": "/",
-  "/work/page": "/work"
+  "/work/page": "/work",
+  "/services/page": "/services"
 }

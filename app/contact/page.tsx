@@ -464,29 +464,32 @@ export default function ContactPage() {
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
                       <h4 className="font-semibold text-blue-900 mb-3 text-sm sm:text-base">Having trouble with the calendar?</h4>
                       <div className="space-y-3">
+                        {/* Call to Schedule */}
                         <a 
                           href="tel:757-296-8897"
-                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
+                          className="flex items-center justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
                         >
-                          <div className="flex items-center">
+                          <div className="flex items-center flex-shrink-0">
                             <div className="w-8 h-8 flex items-center justify-center mr-3 bg-blue-100 rounded-lg flex-shrink-0">
                               <i className="ri-phone-line text-blue-600"></i>
                             </div>
-                            <span className="font-medium text-gray-700 text-sm sm:text-base">Call to Schedule</span>
+                            <span className="font-medium text-gray-700 text-sm">Call to Schedule</span>
                           </div>
-                          <span className="text-blue-600 font-semibold text-sm sm:text-base break-all sm:break-normal ml-11 sm:ml-0">757-296-8897</span>
+                          <span className="text-blue-600 font-semibold text-sm whitespace-nowrap ml-2">757-296-8897</span>
                         </a>
+
+                        {/* Email for Appointment — fixed: always one row, no wrapping */}
                         <a 
                           href="mailto:info@thevirtualstaffingsolution.com"
-                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
+                          className="flex items-center justify-between p-3 bg-white rounded-lg hover:shadow-md transition-all gap-2"
                         >
-                          <div className="flex items-center">
+                          <div className="flex items-center flex-shrink-0">
                             <div className="w-8 h-8 flex items-center justify-center mr-3 bg-blue-100 rounded-lg flex-shrink-0">
                               <i className="ri-mail-line text-blue-600"></i>
                             </div>
-                            <span className="font-medium text-gray-700 text-sm sm:text-base">Email for Appointment</span>
+                            <span className="font-medium text-gray-700 text-sm">Email for Appointment</span>
                           </div>
-                          <span className="text-blue-600 font-semibold text-xs sm:text-sm break-all ml-11 sm:ml-0">info@thevirtualstaffingsolution.com</span>
+                          <span className="text-blue-600 font-semibold text-xs whitespace-nowrap ml-2">info@thevirtualstaffingsolution.com</span>
                         </a>
                       </div>
                     </div>
